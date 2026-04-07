@@ -230,7 +230,9 @@ MonoBehaviour:
   numText: {fileID: 0}
   cardNumber: 0
   rotationSpeed: 3
-  isClick: 0
+  isFront: 0
+  isMatched: 0
+  cardGame: {fileID: 1845122530}
 --- !u!114 &143283945
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -918,7 +920,9 @@ MonoBehaviour:
   numText: {fileID: 0}
   cardNumber: 0
   rotationSpeed: 3
-  isClick: 0
+  isFront: 0
+  isMatched: 0
+  cardGame: {fileID: 1845122530}
 --- !u!114 &588132354
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1068,7 +1072,9 @@ MonoBehaviour:
   numText: {fileID: 0}
   cardNumber: 0
   rotationSpeed: 3
-  isClick: 0
+  isFront: 0
+  isMatched: 0
+  cardGame: {fileID: 1845122530}
 --- !u!114 &625019315
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1355,7 +1361,9 @@ MonoBehaviour:
   numText: {fileID: 0}
   cardNumber: 0
   rotationSpeed: 3
-  isClick: 0
+  isFront: 0
+  isMatched: 0
+  cardGame: {fileID: 1845122530}
 --- !u!114 &653756928
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1753,7 +1761,9 @@ MonoBehaviour:
   numText: {fileID: 0}
   cardNumber: 0
   rotationSpeed: 3
-  isClick: 0
+  isFront: 0
+  isMatched: 0
+  cardGame: {fileID: 1845122530}
 --- !u!114 &783186035
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2013,7 +2023,9 @@ MonoBehaviour:
   numText: {fileID: 0}
   cardNumber: 0
   rotationSpeed: 3
-  isClick: 0
+  isFront: 0
+  isMatched: 0
+  cardGame: {fileID: 1845122530}
 --- !u!114 &835610226
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2592,7 +2604,9 @@ MonoBehaviour:
   numText: {fileID: 0}
   cardNumber: 0
   rotationSpeed: 3
-  isClick: 0
+  isFront: 0
+  isMatched: 0
+  cardGame: {fileID: 1845122530}
 --- !u!114 &1505049930
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2879,7 +2893,9 @@ MonoBehaviour:
   numText: {fileID: 0}
   cardNumber: 0
   rotationSpeed: 3
-  isClick: 0
+  isFront: 0
+  isMatched: 0
+  cardGame: {fileID: 1845122530}
 --- !u!114 &1620581421
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3166,7 +3182,9 @@ MonoBehaviour:
   numText: {fileID: 0}
   cardNumber: 0
   rotationSpeed: 3
-  isClick: 0
+  isFront: 0
+  isMatched: 0
+  cardGame: {fileID: 1845122530}
 --- !u!114 &1794775251
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3205,6 +3223,61 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1794775247}
   m_CullTransparentMesh: 1
+--- !u!1 &1845122529
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1845122531}
+  - component: {fileID: 1845122530}
+  m_Layer: 0
+  m_Name: CardGame
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1845122530
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1845122529}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 452c3d2769ef1964ebaf7467fd0b0cb2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CardGame
+  cards:
+  - {fileID: 835610225}
+  - {fileID: 653756927}
+  - {fileID: 783186034}
+  - {fileID: 143283944}
+  - {fileID: 1620581420}
+  - {fileID: 1794775250}
+  - {fileID: 625019314}
+  - {fileID: 1952980707}
+  - {fileID: 1505049929}
+  - {fileID: 588132353}
+--- !u!4 &1845122531
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1845122529}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 522.1287, y: 305.03192, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1952980704
 GameObject:
   m_ObjectHideFlags: 0
@@ -3316,7 +3389,9 @@ MonoBehaviour:
   numText: {fileID: 0}
   cardNumber: 0
   rotationSpeed: 3
-  isClick: 0
+  isFront: 0
+  isMatched: 0
+  cardGame: {fileID: 1845122530}
 --- !u!114 &1952980708
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3501,3 +3576,4 @@ SceneRoots:
   - {fileID: 832575519}
   - {fileID: 759787913}
   - {fileID: 805923040}
+  - {fileID: 1845122531}
