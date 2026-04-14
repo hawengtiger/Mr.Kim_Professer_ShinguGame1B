@@ -52,12 +52,17 @@ public class Card : MonoBehaviour
     {
         if(!isMatched) //짝이 아니면 계속 뒤집을 수 있게 설정
         {
-            isFront = !isFront;     //클릭 유무확인 bool변수
+            
             cardGame.OnClickCard(this);
         }
     }
 
     //카드 돌리기.
+
+    public void Flip(bool isFront)
+    {
+        this.isFront = isFront;
+    }
 
     /// <summary>
     /// ===| 카드 설정 함수 |===
@@ -78,7 +83,11 @@ public class Card : MonoBehaviour
     {
         GetComponent<Image>().color = newColor;         //Image컴포넌트의 색을 newColor값으로 바꿈
     }
-    
+
+    public void SetImage(Sprite sprite)
+    {
+        GetComponent<Image>().sprite = sprite;         //Image컴포넌트의 이미지를 sprite로 바꿈
+    }
 
     //카드
 

@@ -12,6 +12,7 @@ public class CardGame : MonoBehaviour
     /// </summary>
     
     public List<Card> cards;    //새로운 "카드" 리스트
+    public List<Sprite> sprites; //새로운 "이미지" 리스트
 
     /// <summary>
     /// | private | =========================
@@ -19,6 +20,7 @@ public class CardGame : MonoBehaviour
 
     private Card firstCard = null;
     private Card secondCard = null;
+    private bool isChecking = false;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -63,13 +65,17 @@ public class CardGame : MonoBehaviour
     /// </summary>
     public void OnClickCard(Card card)
     {
+        if (isChecking) return;
+        
         if (firstCard == null)      //첫번 째가 널이 아니면 두번 째 패로 할당시키게 함.
         {
             firstCard = card;
+            firstCard.Flip(true);
         }
-        else
+        else if (firstCard != card)
         {
             secondCard = card;
+            secondCard.Flip(true);
         }
 
         if (firstCard != null && secondCard != null)        //둘다 널이 아닐경우 채크시작
@@ -89,6 +95,7 @@ public class CardGame : MonoBehaviour
         for (int i = 0; i < cards.Count; ++i)
         {
             cards[i].SetCardNumber(randomPairNumbers[i]); //섞인 카드 호출 요청.
+            cards[i].SetImage(sprites[randomPairNumbers[i]]);   //randomPairNumbers인덱스에 카드 이미지를 적용.
             cards[i].isFront = false;       //시작시 카드는 뒤집혀져 있는 상태로 시작.
         }
     }
@@ -98,6 +105,8 @@ public class CardGame : MonoBehaviour
     /// </summary>
     private void CheckCard() //카드가 짝인지?
     {
+        isChecking = true;
+
         if(firstCard.cardNumber == secondCard.cardNumber)
         {
             //정답
@@ -110,6 +119,8 @@ public class CardGame : MonoBehaviour
 
             firstCard = null;       //초기화
             secondCard = null;      //초기화
+
+            isChecking = false;     //중복입력 금지
         }
         else
         {
@@ -128,8 +139,13 @@ public class CardGame : MonoBehaviour
         firstCard.isFront = false;
         secondCard.isFront = false;
 
+        firstCard.Flip(false);
+        secondCard.Flip(false);
+
         firstCard = null;
         secondCard = null;
+
+        isChecking = false;
     }
 
 
