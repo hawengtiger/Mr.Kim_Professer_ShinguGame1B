@@ -22,10 +22,34 @@ public class CardGame : MonoBehaviour
     private Card secondCard = null;
     private bool isChecking = false;
 
+    public int pairCount; // 총 만들 카드 짝 수
+    public GameObject cardPrefab; // 카드 프리팹
+    public Transform cardGrid; // 카드 부모 (Grid 같은거)
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        CreateCards();
         StartGame();
+    }
+
+    /// <summary>
+    /// ===| 프리팹을 카드를 개수 만큼 채워넣는 함수 |===
+    /// </summary>
+    void CreateCards()
+    {
+        cards = new List<Card>();   //객체 선언
+
+        int totalCardCount = pairCount * 2;     //패어 개수 * 2 = 실재 카드 수
+
+        for (int i = 0; i < totalCardCount; i++)
+        {
+            GameObject obj = Instantiate(cardPrefab, cardGrid);     // cardGrid에 cardPrefab을 totalCardCount번 만큼 복사
+            Card card = obj.GetComponent<Card>();   // 방금 만든 카드 오브젝트에서 Card 스크립트를 가져옴
+            card.cardGame = this;                                  // 카드 프리팹에 CardGame 참조 연결 하기위해 this를 사용.
+
+            cards.Add(card);                                           // 생성된 카드를 리스트에 추가
+        }
     }
 
     /// <summary>
@@ -89,6 +113,12 @@ public class CardGame : MonoBehaviour
     /// </summary>
     private void StartGame()
     {
+        if (sprites.Count < pairCount)
+        {
+            Debug.LogError("스프라이트 개수가 카드보다  부족함");
+            return;
+        }
+
         List<int> randomPairNumbers = GeneratePairNumbers(cards.Count); //사실상 randomPairNumbers = newCardNumbers라고 보면됨.
 
 
