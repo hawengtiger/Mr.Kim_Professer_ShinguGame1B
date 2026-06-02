@@ -19,12 +19,16 @@ public class Card : MonoBehaviour
     public bool isMatched = false;
     public CardGame cardGame;
 
+    public Sprite origin = null; // 초기 카드 그림
+
+
     /// <summary>
     /// | private | =========================
     /// </summary>
 
     private Quaternion flipRotation = Quaternion.Euler(0, 180f, 0);
     private Quaternion originRotation = Quaternion.Euler(0, 0, 0);
+    private Sprite flipcard;
 
     // Update is called once per frame
     void Update()
@@ -36,10 +40,12 @@ public class Card : MonoBehaviour
         if(isFront)    // isFront가 참이 됐으면 0도 그 외엔 180도.
         {
             transform.rotation = Quaternion.Slerp(transform.rotation, originRotation, rotationSpeed * Time.deltaTime);
+            GetComponent<Image>().sprite = flipcard; 
         }
         else
         {
             transform.rotation = Quaternion.Slerp(transform.rotation, flipRotation, rotationSpeed * Time.deltaTime);
+            GetComponent<Image>().sprite = origin;
         }
 
         //Time.deltaTime 드랍되는 프레임을 곱해줌으로 써 일정한 프레임을 유지하기 위한 코드.
@@ -86,7 +92,7 @@ public class Card : MonoBehaviour
 
     public void SetImage(Sprite sprite)
     {
-        GetComponent<Image>().sprite = sprite;         //Image컴포넌트의 이미지를 sprite로 바꿈
+        flipcard = sprite;         //Image컴포넌트의 이미지를 sprite로 바꿈
     }
 
     //카드
