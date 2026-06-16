@@ -8,29 +8,26 @@ public class AnimationController : MonoBehaviour
     public ExampleCharacterController character;
 
     bool wasGrounded;
+    bool isJumping;
 
     void Update()
     {
         if (animator == null || character == null || character.Motor == null)
             return;
 
-        // 접지 상태
         bool isGrounded =
             character.Motor.GroundingStatus.IsStableOnGround;
 
         animator.SetBool("Grounded", isGrounded);
 
-        // 이동 속도
         Vector3 planarVelocity =
             Vector3.ProjectOnPlane(
                 character.Motor.Velocity,
                 character.Motor.CharacterUp);
 
         float speed = planarVelocity.magnitude;
-
         animator.SetFloat("Speed", speed);
 
-        // 수직 속도
         float verticalVelocity =
             Vector3.Dot(
                 character.Motor.Velocity,
@@ -39,9 +36,13 @@ public class AnimationController : MonoBehaviour
         // 점프 시작
         if (wasGrounded &&
             !isGrounded &&
-            verticalVelocity > 0.1f)
+            verticalVelocity > 0.1f &&
+            !isJumping)
         {
-            animator.SetBool("Jump", true);
+            animator.ResetTrigger("Jump");
+            animator.SetTrigger("Jump");
+
+            isJumping = true;
         }
 
         // 낙하
@@ -54,7 +55,9 @@ public class AnimationController : MonoBehaviour
         // 착지
         if (isGrounded)
         {
-            animator.SetBool("Jump", false);
+            isJumping = false;
+
+            animator.ResetTrigger("Jump");
             animator.SetBool("FreeFall", false);
         }
 
