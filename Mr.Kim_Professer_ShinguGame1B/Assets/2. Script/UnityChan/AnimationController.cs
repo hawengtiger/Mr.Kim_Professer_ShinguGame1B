@@ -40,6 +40,7 @@ public class AnimationController : MonoBehaviour
             !isJumping)
         {
             animator.ResetTrigger("Jump");
+
             animator.SetTrigger("Jump");
 
             isJumping = true;
